@@ -1,7 +1,6 @@
 plugins {
     id("java")
     id("application")
-
 }
 
 group = "org.rengen.takehome"
@@ -28,6 +27,15 @@ dependencies {
     testImplementation("org.mockito:mockito-junit-jupiter:5.2.0")
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(24)
+    }
+}
+
+application {
+    mainClass.set("org.rengen.takehome.Main")
+}
 
 tasks.test {
     useJUnitPlatform()
