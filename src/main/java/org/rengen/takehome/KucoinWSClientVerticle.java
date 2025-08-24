@@ -60,6 +60,7 @@ public class KucoinWSClientVerticle extends AbstractVerticle {
             closeSession();
             // reconnect will be attempted after close event triggers
             message.reply("WebSocket restart requested");
+            connectWebSocket();
         });
 
         connectWebSocket();
