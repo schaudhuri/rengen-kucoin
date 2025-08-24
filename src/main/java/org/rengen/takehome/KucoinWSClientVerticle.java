@@ -6,16 +6,14 @@ import io.vertx.core.eventbus.EventBus;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 
-import javax.websocket.*;
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
+import javax.websocket.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
 @ClientEndpoint
 public class KucoinWSClientVerticle extends AbstractVerticle {
@@ -48,7 +46,7 @@ public class KucoinWSClientVerticle extends AbstractVerticle {
         eventBus.consumer("websocket.start", message -> {
             System.out.println("Received websocket.start command");
             if (userSession == null || !userSession.isOpen()) {
-                autoReconnect = false; // disable auto reconnect when start manually
+                autoReconnect = true; // re-enable auto reconnect when start manually
                 connectWebSocket();
                 message.reply("WebSocket started");
             } else {

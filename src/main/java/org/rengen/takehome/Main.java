@@ -26,7 +26,6 @@ public class Main extends AbstractVerticle {
                 vertx.deployVerticle(new KucoinRestClientVerticle(), options);
                 vertx.deployVerticle(new KucoinWSClientVerticle(), options);
                 vertx.deployVerticle(new AdminRestVerticle());
-                // Now you can use your symbols list for your app logic
             } else {
                 System.out.println("Failed to load config: " + ar.cause());
             }
